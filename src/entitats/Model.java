@@ -6,6 +6,7 @@
 package entitats;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +24,20 @@ public class Model {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Integer id;
+    @Column(name="referencia")
     private Integer Referencia;
+    @Column(name="nom")
     private String Nom;
+    @Column(name="tipuscarrosseria")
     private String TipusCarrosseria;
     
     @Transient
+    @Column(name="conte")
     private List<AcabatCotxe> conte;
     @Transient
+    @Column(name="fabrica")
     private Marca fabrica;
 
     public Integer getId() {

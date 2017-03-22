@@ -10,7 +10,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -32,7 +36,7 @@ public class Controlador {
     private int id = -1;
     private String Nom = "";
     private String SeuCentral = "";
-    //private Marca competeix;
+    private Marca competeix;
     //private Marca esFabricat;
     private int filasel = -1;
 
@@ -44,6 +48,7 @@ public class Controlador {
         BorrarMarca();
         ModificarMarca();
         SeleccionarTaulaMarca();
+        carregaCombo((ArrayList)model.obtenLlista(),vista.getjComboBoxCompeteixMarca());
         CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class); 
         vista.setVisible(true);
     }
@@ -57,17 +62,22 @@ public class Controlador {
         };
         vista.getjButtonSortir().addActionListener(accioSortir);
     }
+    
+    public void carregaCombo(ArrayList resultSet, JComboBox combo) {
+        combo.setModel(new DefaultComboBoxModel((resultSet!=null?resultSet.toArray():new Object[]{})));
+    }
 
     private void InsertarMarca() {
         ActionListener accioInsertarMarca = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource().equals(vista.getjButtonMarcaInsertar())) {
-                    if(!vista.getjTextFieldNomMarca().getText().trim().equals("") || !vista.getjTextFieldSeuCentralMarca().getText().trim().equals("") || !vista.getjTextFieldCompeteixMarca().getText().trim().equals("") || !vista.getjTextFieldEsFabricatMarca().getText().trim().equals(""))
+                    if(!vista.getjTextFieldNomMarca().getText().trim().equals("") || !vista.getjTextFieldSeuCentralMarca().getText().trim().equals("") || !vista.getjTextFieldEsFabricatMarca().getText().trim().equals(""))
                     model.obtenLlista();
-                    Marca m = new Marca(vista.getjTextFieldNomMarca().getText(), vista.getjTextFieldSeuCentralMarca().getText());
+                    Marca m = new Marca(vista.getjTextFieldNomMarca().getText(), vista.getjTextFieldSeuCentralMarca().getText(), (Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem());
                     model.guarda(m);
                     CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class);
+                    carregaCombo((ArrayList)model.obtenLlista(),vista.getjComboBoxCompeteixMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "Introdueix tots els valors", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }

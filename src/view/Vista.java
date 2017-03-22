@@ -6,6 +6,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -48,8 +49,8 @@ public class Vista extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableMarca = new javax.swing.JTable();
         jLabel27 = new javax.swing.JLabel();
-        jTextFieldCompeteixMarca = new javax.swing.JTextField();
         jTextFieldSeuCentralMarca = new javax.swing.JTextField();
+        jComboBoxCompeteixMarca = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jButtonModelInsertar = new javax.swing.JButton();
         jButtonModelBorrar = new javax.swing.JButton();
@@ -145,6 +146,8 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel27.setText("Es Fabricat");
 
+        jComboBoxCompeteixMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -175,9 +178,9 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jLabel25)
                             .addComponent(jLabel27))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCompeteixMarca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(jComboBoxCompeteixMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,12 +205,10 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(jTextFieldSeuCentralMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCompeteixMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel25)))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jComboBoxCompeteixMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,14 +624,6 @@ public class Vista extends javax.swing.JFrame {
         this.jTableModel = jTableModel;
     }
 
-    public JTextField getjTextFieldCompeteixMarca() {
-        return jTextFieldCompeteixMarca;
-    }
-
-    public void setjTextFieldCompeteixMarca(JTextField jTextFieldCompeteixMarca) {
-        this.jTextFieldCompeteixMarca = jTextFieldCompeteixMarca;
-    }
-
     public JTextField getjTextFieldConteModel() {
         return jTextFieldConteModel;
     }
@@ -711,6 +704,14 @@ public class Vista extends javax.swing.JFrame {
         this.jTextFieldTipusFabricatModel = jTextFieldTipusFabricatModel;
     }
 
+    public JComboBox<String> getjComboBoxCompeteixMarca() {
+        return jComboBoxCompeteixMarca;
+    }
+
+    public void setjComboBoxCompeteixMarca(JComboBox<String> jComboBoxCompeteixMarca) {
+        this.jComboBoxCompeteixMarca = jComboBoxCompeteixMarca;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAcabatCotxeBorrar;
     private javax.swing.JButton jButtonAcabatCotxeInsertar;
@@ -722,6 +723,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModelInsertar;
     private javax.swing.JButton jButtonModelModificar;
     private javax.swing.JButton jButtonSortir;
+    private javax.swing.JComboBox<String> jComboBoxCompeteixMarca;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -752,7 +754,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextFieldCompeteixMarca;
     private javax.swing.JTextField jTextFieldConteModel;
     private javax.swing.JTextField jTextFieldEsFabricatMarca;
     private javax.swing.JTextField jTextFieldIdMarca;

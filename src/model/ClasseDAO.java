@@ -30,6 +30,7 @@ public class ClasseDAO<T> {
     
     public ClasseDAO(Class<T> p) {
         this.p = p;
+        this.sesion=sesion;
     }
     
     public long guarda(T objecte) throws HibernateException {
