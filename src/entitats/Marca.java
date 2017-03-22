@@ -5,9 +5,7 @@
  */
 package entitats;
 
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,31 +24,36 @@ public class Marca {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer _1_id;
+    private Integer _1_Id;
     private String _2_Nom;
     private String _3_SeuCentral;
     
-    //@Transient
-    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
-    private Marca _4_competeix;
+    //@OneToOne(cascade=javax.persistence.CascadeType.ALL)
+    @OneToOne(optional=false)
+    private Marca _4_Competeix;
     @Transient
-    private List<Model> _5_esFabricat;
+    private List<Model> _5_EsFabricat;
 
     public Marca() {
     }
 
-    public Marca(String _2_Nom, String _3_SeuCentral, Marca _4_competeix) {
+    public Marca(String _2_Nom, String _3_SeuCentral, Marca _4_Competeix) {
         this._2_Nom = _2_Nom;
         this._3_SeuCentral = _3_SeuCentral;
-        this._4_competeix = _4_competeix;
+        this._4_Competeix = _4_Competeix;
     }
 
-    public Integer get1_id() {
-        return _1_id;
+    @Override
+    public String toString() {
+        return _2_Nom;
     }
 
-    public void set1_id(Integer _1_id) {
-        this._1_id = _1_id;
+    public Integer get1_Id() {
+        return _1_Id;
+    }
+
+    public void set1_Id(Integer _1_Id) {
+        this._1_Id = _1_Id;
     }
 
     public String get2_Nom() {
@@ -69,25 +72,19 @@ public class Marca {
         this._3_SeuCentral = _3_SeuCentral;
     }
 
-    public Marca get4_competeix() {
-        return _4_competeix;
+    public Marca get4_Competeix() {
+        return _4_Competeix;
     }
 
-    public void set4_competeix(Marca _4_competeix) {
-        this._4_competeix = _4_competeix;
+    public void set4_Competeix(Marca _4_Competeix) {
+        this._4_Competeix = _4_Competeix;
     }
 
-    public List<Model> get5_esFabricat() {
-        return _5_esFabricat;
+    public List<Model> get5_EsFabricat() {
+        return _5_EsFabricat;
     }
 
-    public void set5_esFabricat(List<Model> _5_esFabricat) {
-        this._5_esFabricat = _5_esFabricat;
+    public void set5_EsFabricat(List<Model> _5_EsFabricat) {
+        this._5_EsFabricat = _5_EsFabricat;
     }
-
-    @Override
-    public String toString() {
-        return _2_Nom;
-    }
-    
 }

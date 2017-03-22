@@ -10,9 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -49,7 +47,7 @@ public class Controlador {
         ModificarMarca();
         SeleccionarTaulaMarca();
         carregaCombo((ArrayList)model.obtenLlista(),vista.getjComboBoxCompeteixMarca());
-        CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class); 
+        CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class);
         vista.setVisible(true);
     }
 
@@ -63,8 +61,28 @@ public class Controlador {
         vista.getjButtonSortir().addActionListener(accioSortir);
     }
     
-    public void carregaCombo(ArrayList resultSet, JComboBox combo) {
+    private void carregaCombo(ArrayList resultSet, JComboBox combo) {
         combo.setModel(new DefaultComboBoxModel((resultSet!=null?resultSet.toArray():new Object[]{})));
+    }
+    
+    private void SeleccionarTaulaMarca() {
+        MouseAdapter clickTable = new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (vista.getjTableMarca().getSelectedRow() != -1) {
+                    super.mouseClicked(e);
+                    DefaultTableModel model = (DefaultTableModel) vista.getjTableMarca().getModel();
+                    vista.getjTextFieldIdMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 0).toString());
+                    vista.getjTextFieldNomMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 1).toString());
+                    vista.getjTextFieldSeuCentralMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 2).toString());
+                    vista.getjComboBoxCompeteixMarca().setSelectedItem(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 3).toString());
+                } else {
+                    JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        };
+        vista.getjTableMarca().addMouseListener(clickTable);
     }
 
     private void InsertarMarca() {
@@ -98,6 +116,7 @@ public class Controlador {
                     model.elimina(borrarM);
                     vista.getjTableMarca().addColumn(CarregaTaulaMarca);
                     CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class);
+                    carregaCombo((ArrayList)model.obtenLlista(),vista.getjComboBoxCompeteixMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula per poder borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -117,11 +136,13 @@ public class Controlador {
                     Marca modificarM = (Marca) tmodel.getValueAt(vista.getjTableMarca().getSelectedRow(), tmodel.getColumnCount() -1);
                     modificarM.set2_Nom(vista.getjTextFieldNomMarca().getText());
                     modificarM.set3_SeuCentral(vista.getjTextFieldSeuCentralMarca().getText());
+                    modificarM.set4_Competeix((Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem());
                     
                     vista.getjTableMarca().removeColumn(CarregaTaulaMarca);
                     model.actualitza(modificarM);
                     vista.getjTableMarca().addColumn(CarregaTaulaMarca);
                     CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) model.obtenLlista(), vista.getjTableMarca(), Marca.class);
+                    carregaCombo((ArrayList)model.obtenLlista(),vista.getjComboBoxCompeteixMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula per poder Modificiar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -129,25 +150,4 @@ public class Controlador {
         };
         vista.getjButtonMarcaModificar().addActionListener(accioModificarMarca);
     }
-
-    private void SeleccionarTaulaMarca() {
-        MouseAdapter clickTable = new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (vista.getjTableMarca().getSelectedRow() != -1) {
-                    super.mouseClicked(e);
-                    DefaultTableModel model = (DefaultTableModel) vista.getjTableMarca().getModel();
-                    vista.getjTextFieldIdMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 0).toString());
-                    vista.getjTextFieldNomMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 1).toString());
-                    vista.getjTextFieldSeuCentralMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 2).toString());
-                } else {
-                    JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula", "Error", JOptionPane.ERROR_MESSAGE);
-
-                }
-            }
-
-        };
-        vista.getjTableMarca().addMouseListener(clickTable);
-    }
-    
 }

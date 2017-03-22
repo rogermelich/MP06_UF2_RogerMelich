@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -146,7 +148,7 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel27.setText("Es Fabricat");
 
-        jComboBoxCompeteixMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {  }));
+        jComboBoxCompeteixMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { null }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

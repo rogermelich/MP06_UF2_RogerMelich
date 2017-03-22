@@ -22,34 +22,31 @@ public class AcabatCotxe {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer id;
-    @Column(name="pack")
-    private String Pack;
-    @Column(name="qualitatacabament")
-    private String QualitatAcabament;
+    private Integer _1_Id;
+    private String _2_Pack;
+    private String _3_QualitatAcabament;
 
-    public Integer getId() {
-        return id;
+    public Integer get1_Id() {
+        return _1_Id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void set1_Id(Integer _1_Id) {
+        this._1_Id = _1_Id;
     }
 
-    public String getPack() {
-        return Pack;
+    public String get2_Pack() {
+        return _2_Pack;
     }
 
-    public void setPack(String Pack) {
-        this.Pack = Pack;
+    public void set2_Pack(String _2_Pack) {
+        this._2_Pack = _2_Pack;
     }
 
-    public String getQualitatAcabament() {
-        return QualitatAcabament;
+    public String get3_QualitatAcabament() {
+        return _3_QualitatAcabament;
     }
 
-    public void setQualitatAcabament(String QualitatAcabament) {
-        this.QualitatAcabament = QualitatAcabament;
+    public void set3_QualitatAcabament(String _3_QualitatAcabament) {
+        this._3_QualitatAcabament = _3_QualitatAcabament;
     }
 }

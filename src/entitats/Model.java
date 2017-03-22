@@ -24,67 +24,61 @@ public class Model {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer id;
-    @Column(name="referencia")
-    private Integer Referencia;
-    @Column(name="nom")
-    private String Nom;
-    @Column(name="tipuscarrosseria")
-    private String TipusCarrosseria;
+    private Integer _1_Id;
+    private Integer _2_Referencia;
+    private String _3_Nom;
+    private String _4_TipusCarrosseria;
     
     @Transient
-    @Column(name="conte")
-    private List<AcabatCotxe> conte;
+    private List<AcabatCotxe> _5_Conte;
     @Transient
-    @Column(name="fabrica")
-    private Marca fabrica;
+    private Marca _6_Fabrica;
 
-    public Integer getId() {
-        return id;
+    public Integer get1_Id() {
+        return _1_Id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void set1_Id(Integer _1_Id) {
+        this._1_Id = _1_Id;
     }
 
-    public Integer getReferencia() {
-        return Referencia;
+    public Integer get2_Referencia() {
+        return _2_Referencia;
     }
 
-    public void setReferencia(Integer Referencia) {
-        this.Referencia = Referencia;
+    public void set2_Referencia(Integer _2_Referencia) {
+        this._2_Referencia = _2_Referencia;
     }
 
-    public String getNom() {
-        return Nom;
+    public String get3_Nom() {
+        return _3_Nom;
     }
 
-    public void setNom(String Nom) {
-        this.Nom = Nom;
+    public void set3_Nom(String _3_Nom) {
+        this._3_Nom = _3_Nom;
     }
 
-    public String getTipusCarrosseria() {
-        return TipusCarrosseria;
+    public String get4_TipusCarrosseria() {
+        return _4_TipusCarrosseria;
     }
 
-    public void setTipusCarrosseria(String TipusCarrosseria) {
-        this.TipusCarrosseria = TipusCarrosseria;
+    public void set4_TipusCarrosseria(String _4_TipusCarrosseria) {
+        this._4_TipusCarrosseria = _4_TipusCarrosseria;
     }
 
-    public List<AcabatCotxe> getConte() {
-        return conte;
+    public List<AcabatCotxe> get5_Conte() {
+        return _5_Conte;
     }
 
-    public void setConte(List<AcabatCotxe> conte) {
-        this.conte = conte;
+    public void set5_Conte(List<AcabatCotxe> _5_Conte) {
+        this._5_Conte = _5_Conte;
     }
 
-    public Marca getFabrica() {
-        return fabrica;
+    public Marca get6_Fabrica() {
+        return _6_Fabrica;
     }
 
-    public void setFabrica(Marca fabrica) {
-        this.fabrica = fabrica;
+    public void set6_Fabrica(Marca _6_Fabrica) {
+        this._6_Fabrica = _6_Fabrica;
     }
 }
