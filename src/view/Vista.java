@@ -53,6 +53,7 @@ public class Vista extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jTextFieldSeuCentralMarca = new javax.swing.JTextField();
         jComboBoxCompeteixMarca = new javax.swing.JComboBox<>();
+        jButtonNetejarCampsMarca = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButtonModelInsertar = new javax.swing.JButton();
         jButtonModelBorrar = new javax.swing.JButton();
@@ -148,7 +149,14 @@ public class Vista extends javax.swing.JFrame {
 
         jLabel27.setText("Es Fabricat");
 
-        jComboBoxCompeteixMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { null }));
+        jComboBoxCompeteixMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Null" }));
+
+        jButtonNetejarCampsMarca.setText("Netejar Camps");
+        jButtonNetejarCampsMarca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonNetejarCampsMarcaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,25 +173,30 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldIdMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(jTextFieldNomMarca)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldIdMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldNomMarca)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldSeuCentralMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxCompeteixMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldSeuCentralMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                            .addComponent(jComboBoxCompeteixMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addComponent(jButtonNetejarCampsMarca)
+                        .addGap(56, 56, 56))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -215,6 +228,8 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEsFabricatMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonNetejarCampsMarca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonMarcaInsertar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -521,6 +536,12 @@ public class Vista extends javax.swing.JFrame {
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowLostFocus
+
+    private void jButtonNetejarCampsMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNetejarCampsMarcaMouseClicked
+        jTextFieldIdMarca.setText("");
+        jTextFieldNomMarca.setText("");
+        jTextFieldSeuCentralMarca.setText("");
+    }//GEN-LAST:event_jButtonNetejarCampsMarcaMouseClicked
     //Getters i Setters
     public JButton getjButtonAcabatCotxeBorrar() {
         return jButtonAcabatCotxeBorrar;
@@ -724,6 +745,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jButtonModelBorrar;
     private javax.swing.JButton jButtonModelInsertar;
     private javax.swing.JButton jButtonModelModificar;
+    private javax.swing.JButton jButtonNetejarCampsMarca;
     private javax.swing.JButton jButtonSortir;
     private javax.swing.JComboBox<String> jComboBoxCompeteixMarca;
     private javax.swing.JLabel jLabel10;

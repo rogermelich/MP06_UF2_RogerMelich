@@ -28,8 +28,7 @@ public class Marca {
     private String _2_Nom;
     private String _3_SeuCentral;
     
-    //@OneToOne(cascade=javax.persistence.CascadeType.ALL)
-    @OneToOne(optional=false)
+    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
     private Marca _4_Competeix;
     @Transient
     private List<Model> _5_EsFabricat;

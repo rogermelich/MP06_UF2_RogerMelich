@@ -84,7 +84,8 @@ public class Controlador {
         };
         vista.getjTableMarca().addMouseListener(clickTable);
     }
-
+    
+    //CRUD Marca
     private void InsertarMarca() {
         ActionListener accioInsertarMarca = new ActionListener() {
             @Override
