@@ -31,6 +31,8 @@ public class Marca {
     @OneToOne(cascade=javax.persistence.CascadeType.ALL)
     private Marca _4_Competeix;
     @Transient
+    //@OneToMany(cascade=javax.persistence.CascadeType.ALL, mappedBy="client")           
+    //private Set<Comanda> comandes=new TreeSet<>();
     private List<Model> _5_EsFabricat;
 
     public Marca() {
@@ -40,11 +42,6 @@ public class Marca {
         this._2_Nom = _2_Nom;
         this._3_SeuCentral = _3_SeuCentral;
         this._4_Competeix = _4_Competeix;
-    }
-
-    @Override
-    public String toString() {
-        return _2_Nom;
     }
 
     public Integer get1_Id() {
@@ -85,5 +82,10 @@ public class Marca {
 
     public void set5_EsFabricat(List<Model> _5_EsFabricat) {
         this._5_EsFabricat = _5_EsFabricat;
+    }
+
+    @Override
+    public String toString() {
+        return _2_Nom;
     }
 }

@@ -34,6 +34,15 @@ public class Model {
     @Transient
     private Marca _6_Fabrica;
 
+    public Model() {
+    }
+
+    public Model(Integer _2_Referencia, String _3_Nom, String _4_TipusCarrosseria) {
+        this._2_Referencia = _2_Referencia;
+        this._3_Nom = _3_Nom;
+        this._4_TipusCarrosseria = _4_TipusCarrosseria;
+    }
+
     public Integer get1_Id() {
         return _1_Id;
     }

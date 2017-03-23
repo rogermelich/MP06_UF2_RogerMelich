@@ -20,10 +20,11 @@ public class Hibernate {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ClasseDAO<Marca> model = new ClasseDAO<>(Marca.class);
+        ClasseDAO<Marca> modelMarca = new ClasseDAO<>(Marca.class);
+        ClasseDAO<Model> modelModel = new ClasseDAO<>(Model.class);
         Vista vista = new Vista();
     
-        new Controlador(model, vista);
+        new Controlador(modelMarca, modelModel, vista);
         
         //Comprovació
         // TODO code application logic here
