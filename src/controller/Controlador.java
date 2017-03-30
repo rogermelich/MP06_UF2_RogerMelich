@@ -12,8 +12,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -26,19 +30,12 @@ import view.Vista;
  * @author roger
  */
 public class Controlador {
-    
+
     private ClasseDAO<Marca> modelMarca;
     private ClasseDAO<Model> modelModel;
     private Vista vista;
     private TableColumn CarregaTaulaMarca;
     private TableColumn CarregaTaulaModel;
-
-    // Camps Taula Marca
-    private int id = -1;
-    private String Nom = "";
-    private String SeuCentral = "";
-    private Marca competeix;
-    //private Marca esFabricat;
     private int filasel = -1;
 
     public Controlador(ClasseDAO<Marca> modelMarca, ClasseDAO<Model> modelModel, Vista vista) {
@@ -54,7 +51,9 @@ public class Controlador {
         ModificarModel();
         SeleccionarTaulaMarca();
         SeleccionarTaulaModel();
-        carregaCombo((ArrayList)modelMarca.obtenLlista(),vista.getjComboBoxCompeteixMarca());
+        carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxCompeteixMarca());
+        carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
+        carregaLlista((ArrayList) modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
         CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) modelMarca.obtenLlista(), vista.getjTableMarca(), Marca.class);
         CarregaTaulaModel = CarregaTaula.carregaTaula((ArrayList) modelModel.obtenLlista(), vista.getjTableModel(), Model.class);
         vista.setVisible(true);
@@ -72,16 +71,25 @@ public class Controlador {
         };
         vista.getjButtonSortir().addActionListener(accioSortir);
     }
-    
+
     private void carregaCombo(ArrayList resultSet, JComboBox combo) {
-        combo.setModel(new DefaultComboBoxModel((resultSet!=null?resultSet.toArray():new Object[]{})));
+        combo.setModel(new DefaultComboBoxModel((resultSet != null ? resultSet.toArray() : new Object[]{})));
     }
-    
+
+    private void carregaLlista(Iterable<Model> modelList, JList jlist) {
+        DefaultListModel<String> model = new DefaultListModel<String>();
+        for (Model p : modelList) {
+            model.addElement(p.toString());
+        }
+        jlist.setModel(model);
+    }
+
     /**
-     * 
+     *
      * Per la Taula Marca
-     * 
-     * Per Seleccionar la linia de la taula i escriure en els JtextF... JCombo....
+     *
+     * Per Seleccionar la linia de la taula i escriure en els JtextF...
+     * JCombo....
      */
     private void SeleccionarTaulaMarca() {
         MouseAdapter clickTable = new MouseAdapter() {
@@ -102,12 +110,13 @@ public class Controlador {
         };
         vista.getjTableMarca().addMouseListener(clickTable);
     }
-    
+
     /**
-     * 
+     *
      * Per la Taula Model
-     * 
-     * Per Seleccionar la linia de la taula i escriure en els JtextF... JCombo....
+     *
+     * Per Seleccionar la linia de la taula i escriure en els JtextF...
+     * JCombo....
      */
     private void SeleccionarTaulaModel() {
         MouseAdapter clickTable = new MouseAdapter() {
@@ -128,23 +137,32 @@ public class Controlador {
         };
         vista.getjTableModel().addMouseListener(clickTable);
     }
-    
+
     /**
-     * 
+     *
      * CRUD Marca
-     * 
+     *
      */
     private void InsertarMarca() {
         ActionListener accioInsertarMarca = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource().equals(vista.getjButtonMarcaInsertar())) {
-                    if(!vista.getjTextFieldNomMarca().getText().trim().equals("") || !vista.getjTextFieldSeuCentralMarca().getText().trim().equals("") || !vista.getjTextFieldEsFabricatMarca().getText().trim().equals(""))
-                    modelMarca.obtenLlista();
-                    Marca m = new Marca(vista.getjTextFieldNomMarca().getText(), vista.getjTextFieldSeuCentralMarca().getText(), (Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem());
-                    modelMarca.guarda(m);
-                    CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) modelMarca.obtenLlista(), vista.getjTableMarca(), Marca.class);
-                    carregaCombo((ArrayList)modelMarca.obtenLlista(),vista.getjComboBoxCompeteixMarca());
+                if (e.getSource().equals(vista.getjButtonMarcaInsertar())) {
+                    if (!vista.getjTextFieldNomMarca().getText().trim().equals("") || !vista.getjTextFieldSeuCentralMarca().getText().trim().equals("")) {
+                        modelMarca.obtenLlista();
+                    }
+                    carregaLlista((ArrayList) modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
+                    JList<String> llista = vista.getjListEsFabricatMarca();
+                    
+                        int index = vista.getjListEsFabricatMarca().getSelectedIndex();
+                        System.out.println("Index Selected: " + index);
+                        System.out.println("Value Selected: " + llista.getSelectedValuesList());
+                        Marca m = new Marca(vista.getjTextFieldNomMarca().getText(), vista.getjTextFieldSeuCentralMarca().getText(), (Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem(), (List<Model>) (Model) llista.getSelectedValuesList());
+                        modelMarca.guarda(m);
+                        CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) modelMarca.obtenLlista(), vista.getjTableMarca(), Marca.class);
+                        carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxCompeteixMarca());
+                        carregaLlista((ArrayList) modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
+                    
                 } else {
                     JOptionPane.showMessageDialog(null, "Introdueix tots els valors", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -158,9 +176,9 @@ public class Controlador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tc = (TableColumnModel) vista.getjTableMarca().getColumnModel();
-                if(vista.getjTableMarca().getSelectedRow() != -1) {
+                if (vista.getjTableMarca().getSelectedRow() != -1) {
                     DefaultTableModel tmodel = (DefaultTableModel) vista.getjTableMarca().getModel();
-                    Marca borrarM = (Marca) tmodel.getValueAt(vista.getjTableMarca().getSelectedRow(), tmodel.getColumnCount() -1);                    
+                    Marca borrarM = (Marca) tmodel.getValueAt(vista.getjTableMarca().getSelectedRow(), tmodel.getColumnCount() - 1);
                     vista.getjTableMarca().removeColumn(CarregaTaulaMarca);
                     modelMarca.elimina(borrarM);
                     vista.getjTableMarca().addColumn(CarregaTaulaMarca);
@@ -178,19 +196,19 @@ public class Controlador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tc = (TableColumnModel) vista.getjTableMarca().getColumnModel();
-                if(vista.getjTableMarca().getSelectedRow() != -1) {
+                if (vista.getjTableMarca().getSelectedRow() != -1) {
                     vista.getjTableMarca().addColumn(CarregaTaulaMarca);
                     DefaultTableModel tmodel = (DefaultTableModel) vista.getjTableMarca().getModel();
-                    Marca modificarM = (Marca) tmodel.getValueAt(vista.getjTableMarca().getSelectedRow(), tmodel.getColumnCount() -1);
+                    Marca modificarM = (Marca) tmodel.getValueAt(vista.getjTableMarca().getSelectedRow(), tmodel.getColumnCount() - 1);
                     modificarM.set2_Nom(vista.getjTextFieldNomMarca().getText());
                     modificarM.set3_SeuCentral(vista.getjTextFieldSeuCentralMarca().getText());
                     modificarM.set4_Competeix((Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem());
-                    
+
                     vista.getjTableMarca().removeColumn(CarregaTaulaMarca);
                     modelMarca.actualitza(modificarM);
                     vista.getjTableMarca().addColumn(CarregaTaulaMarca);
                     CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) modelMarca.obtenLlista(), vista.getjTableMarca(), Marca.class);
-                    carregaCombo((ArrayList)modelMarca.obtenLlista(),vista.getjComboBoxCompeteixMarca());
+                    carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxCompeteixMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula per poder Modificiar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -198,26 +216,29 @@ public class Controlador {
         };
         vista.getjButtonMarcaModificar().addActionListener(accioModificarMarca);
     }
-    
+
     /**
-     * 
+     *
      * CRUD Model
-     * 
+     *
      */
     private void InsertarModel() {
         ActionListener accioInsertarModel = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getSource().equals(vista.getjButtonModelInsertar())) {
-                    if(!vista.getjTextFieldReferenciaModel().getText().trim().equals("") || !vista.getjTextFieldNomModel().getText().trim().equals("") || !vista.getjTextFieldTipusCarrosseriaModel().getText().trim().equals(""))
-                    modelModel.obtenLlista();
+                if (e.getSource().equals(vista.getjButtonModelInsertar())) {
+                    if (!vista.getjTextFieldReferenciaModel().getText().trim().equals("") || !vista.getjTextFieldNomModel().getText().trim().equals("") || !vista.getjTextFieldTipusCarrosseriaModel().getText().trim().equals("")) {
+                        modelModel.obtenLlista();
+                    }
                     //String to Int
                     String Referencia = vista.getjTextFieldReferenciaModel().getText();
                     int mreferencia = Integer.parseInt(Referencia);
                     //
-                    Model m = new Model(mreferencia, vista.getjTextFieldNomModel().getText(), vista.getjTextFieldTipusCarrosseriaModel().getText());
+                    Model m = new Model(mreferencia, vista.getjTextFieldNomModel().getText(), vista.getjTextFieldTipusCarrosseriaModel().getText(), (Marca) vista.getjComboBoxFabricatModel().getSelectedItem());
                     modelModel.guarda(m);
                     CarregaTaulaModel = CarregaTaula.carregaTaula((ArrayList) modelModel.obtenLlista(), vista.getjTableModel(), Model.class);
+                    carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
+                    carregaLlista(modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "Introdueix tots els valors", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -231,13 +252,15 @@ public class Controlador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tc = (TableColumnModel) vista.getjTableModel().getColumnModel();
-                if(vista.getjTableModel().getSelectedRow() != -1) {
+                if (vista.getjTableModel().getSelectedRow() != -1) {
                     DefaultTableModel tmodel = (DefaultTableModel) vista.getjTableModel().getModel();
-                    Model borrarM = (Model) tmodel.getValueAt(vista.getjTableModel().getSelectedRow(), tmodel.getColumnCount() -1);                    
+                    Model borrarM = (Model) tmodel.getValueAt(vista.getjTableModel().getSelectedRow(), tmodel.getColumnCount() - 1);
                     vista.getjTableModel().removeColumn(CarregaTaulaModel);
                     modelModel.elimina(borrarM);
                     vista.getjTableModel().addColumn(CarregaTaulaModel);
                     CarregaTaulaModel = CarregaTaula.carregaTaula((ArrayList) modelModel.obtenLlista(), vista.getjTableModel(), Model.class);
+                    carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
+                    carregaLlista(modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula per poder borrar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -251,10 +274,10 @@ public class Controlador {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TableColumnModel tc = (TableColumnModel) vista.getjTableMarca().getColumnModel();
-                if(vista.getjTableModel().getSelectedRow() != -1) {
+                if (vista.getjTableModel().getSelectedRow() != -1) {
                     vista.getjTableModel().addColumn(CarregaTaulaModel);
                     DefaultTableModel tmodel = (DefaultTableModel) vista.getjTableModel().getModel();
-                    Model modificarM = (Model) tmodel.getValueAt(vista.getjTableModel().getSelectedRow(), tmodel.getColumnCount() -1);
+                    Model modificarM = (Model) tmodel.getValueAt(vista.getjTableModel().getSelectedRow(), tmodel.getColumnCount() - 1);
                     //String to Int
                     String Referencia = vista.getjTextFieldReferenciaModel().getText();
                     int mreferencia = Integer.parseInt(Referencia);
@@ -262,11 +285,13 @@ public class Controlador {
                     modificarM.set2_Referencia(mreferencia);
                     modificarM.set3_Nom(vista.getjTextFieldNomModel().getText());
                     modificarM.set4_TipusCarrosseria(vista.getjTextFieldTipusCarrosseriaModel().getText());
-                    
+
                     vista.getjTableModel().removeColumn(CarregaTaulaModel);
                     modelModel.actualitza(modificarM);
                     vista.getjTableModel().addColumn(CarregaTaulaModel);
                     CarregaTaulaModel = CarregaTaula.carregaTaula((ArrayList) modelModel.obtenLlista(), vista.getjTableModel(), Model.class);
+                    carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
+                    carregaLlista(modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula per poder Modificiar", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }

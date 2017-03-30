@@ -6,11 +6,15 @@
 package entitats;
 
 import java.util.List;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -31,16 +35,19 @@ public class Model {
     
     @Transient
     private List<AcabatCotxe> _5_Conte;
-    @Transient
+    //@Transient
+    @ManyToOne
+    //@JoinColumn(name="CLI_ID", nullable=true)
     private Marca _6_Fabrica;
 
     public Model() {
     }
 
-    public Model(Integer _2_Referencia, String _3_Nom, String _4_TipusCarrosseria) {
+    public Model(Integer _2_Referencia, String _3_Nom, String _4_TipusCarrosseria, Marca _6_Fabrica) {
         this._2_Referencia = _2_Referencia;
         this._3_Nom = _3_Nom;
         this._4_TipusCarrosseria = _4_TipusCarrosseria;
+        this._6_Fabrica = _6_Fabrica;
     }
 
     public Integer get1_Id() {
@@ -89,5 +96,10 @@ public class Model {
 
     public void set6_Fabrica(Marca _6_Fabrica) {
         this._6_Fabrica = _6_Fabrica;
+    }
+
+    @Override
+    public String toString() {
+        return _3_Nom;
     }
 }

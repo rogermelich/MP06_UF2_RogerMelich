@@ -5,14 +5,22 @@
  */
 package entitats;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.swing.ListModel;
 
 /**
  *
@@ -21,27 +29,34 @@ import javax.persistence.Transient;
 @Entity
 @Table(name = "marques")
 public class Marca {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer _1_Id;
     private String _2_Nom;
     private String _3_SeuCentral;
-    
-    @OneToOne(cascade=javax.persistence.CascadeType.ALL)
+
+    @OneToOne(cascade = javax.persistence.CascadeType.ALL)
     private Marca _4_Competeix;
-    @Transient
-    //@OneToMany(cascade=javax.persistence.CascadeType.ALL, mappedBy="client")           
-    //private Set<Comanda> comandes=new TreeSet<>();
+    
+    //@ElementCollection
+    //@CollectionTable(name = "_6_Fabrica")
+    //@OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "_6_Fabrica")
+    @ElementCollection
+    @CollectionTable(
+        name="_6_Fabrica",
+        joinColumns=@JoinColumn(name="MOD_ID", nullable=true)
+    )
     private List<Model> _5_EsFabricat;
 
     public Marca() {
     }
 
-    public Marca(String _2_Nom, String _3_SeuCentral, Marca _4_Competeix) {
+    public Marca(String _2_Nom, String _3_SeuCentral, Marca _4_Competeix, List<Model> _5_EsFabricat) {
         this._2_Nom = _2_Nom;
         this._3_SeuCentral = _3_SeuCentral;
         this._4_Competeix = _4_Competeix;
+        this._5_EsFabricat = _5_EsFabricat;
     }
 
     public Integer get1_Id() {
@@ -83,7 +98,7 @@ public class Marca {
     public void set5_EsFabricat(List<Model> _5_EsFabricat) {
         this._5_EsFabricat = _5_EsFabricat;
     }
-
+    
     @Override
     public String toString() {
         return _2_Nom;
