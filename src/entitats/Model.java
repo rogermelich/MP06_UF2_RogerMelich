@@ -37,7 +37,7 @@ public class Model {
     private List<AcabatCotxe> _5_Conte;
     //@Transient
     @ManyToOne
-    //@JoinColumn(name="CLI_ID", nullable=true)
+    @JoinColumn(name="CLI_ID", nullable=true)
     private Marca _6_Fabrica;
 
     public Model() {

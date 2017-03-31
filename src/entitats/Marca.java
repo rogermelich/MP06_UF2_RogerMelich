@@ -5,6 +5,7 @@
  */
 package entitats;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,14 +41,7 @@ public class Marca {
     @OneToOne(cascade = javax.persistence.CascadeType.ALL)
     private Marca _4_Competeix;
     
-    //@ElementCollection
-    //@CollectionTable(name = "_6_Fabrica")
-    //@OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "_6_Fabrica")
-    @ElementCollection
-    @CollectionTable(
-        name="_6_Fabrica",
-        joinColumns=@JoinColumn(name="MOD_ID", nullable=true)
-    )
+    @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "_6_Fabrica", fetch = FetchType.EAGER)
     private List<Model> _5_EsFabricat;
 
     public Marca() {
