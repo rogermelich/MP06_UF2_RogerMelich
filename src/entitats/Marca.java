@@ -42,7 +42,7 @@ public class Marca {
     private Marca _4_Competeix;
     
     @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "_6_Fabrica", fetch = FetchType.EAGER)
-    private List<Model> _5_EsFabricat;
+    private List<Model> _5_EsFabricat = new ArrayList<>();
 
     public Marca() {
     }

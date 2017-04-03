@@ -6,6 +6,7 @@
 package view;
 
 import entitats.Model;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -161,6 +162,7 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
+        jListEsFabricatMarca.setFocusable(false);
         jScrollPane1.setViewportView(jListEsFabricatMarca);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -782,7 +784,7 @@ public class Vista extends javax.swing.JFrame {
     }
 
     public JList<Model> getjListEsFabricatMarca() {
-        return jListEsFabricatMarca;
+        return (JList<Model>) jListEsFabricatMarca;
     }
 
     public void setjListEsFabricatMarca(JList<Model> jListEsFabricatMarca) {
