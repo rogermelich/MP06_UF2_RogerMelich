@@ -5,7 +5,6 @@
  */
 package entitats;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +24,14 @@ public class AcabatCotxe {
     private Integer _1_Id;
     private String _2_Pack;
     private String _3_QualitatAcabament;
+
+    public AcabatCotxe() {
+    }
+
+    public AcabatCotxe(String _2_Pack, String _3_QualitatAcabament) {
+        this._2_Pack = _2_Pack;
+        this._3_QualitatAcabament = _3_QualitatAcabament;
+    }
 
     public Integer get1_Id() {
         return _1_Id;
@@ -48,5 +55,10 @@ public class AcabatCotxe {
 
     public void set3_QualitatAcabament(String _3_QualitatAcabament) {
         this._3_QualitatAcabament = _3_QualitatAcabament;
+    }
+
+    @Override
+    public String toString() {
+        return _2_Pack;
     }
 }

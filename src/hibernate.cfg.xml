@@ -12,5 +12,6 @@
     <property name="hibernate.show_sql">true</property>
     <mapping class="entitats.Marca"/>
     <mapping class="entitats.Model"/>
+    <mapping class="entitats.AcabatCotxe"/>
   </session-factory>
 </hibernate-configuration>

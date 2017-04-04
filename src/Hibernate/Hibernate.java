@@ -6,6 +6,7 @@
 package Hibernate;
 
 import controller.Controlador;
+import entitats.AcabatCotxe;
 import entitats.Marca;
 import entitats.Model;
 import model.ClasseDAO;
@@ -22,9 +23,10 @@ public class Hibernate {
     public static void main(String[] args) {
         ClasseDAO<Marca> modelMarca = new ClasseDAO<>(Marca.class);
         ClasseDAO<Model> modelModel = new ClasseDAO<>(Model.class);
+        ClasseDAO<AcabatCotxe> modelAcabatCotxe = new ClasseDAO<>(AcabatCotxe.class);
         Vista vista = new Vista();
     
-        new Controlador(modelMarca, modelModel, vista);
+        new Controlador(modelMarca, modelModel, modelAcabatCotxe, vista);
         
         //Comprovació
         // TODO code application logic here
