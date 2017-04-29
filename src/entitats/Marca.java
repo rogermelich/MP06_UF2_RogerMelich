@@ -30,10 +30,10 @@ public class Marca {
     private String _2_Nom;
     private String _3_SeuCentral;
 
-    @OneToOne(cascade = javax.persistence.CascadeType.ALL)
+    @OneToOne()
     private Marca _4_Competeix;
     
-    @OneToMany(cascade = javax.persistence.CascadeType.ALL, mappedBy = "_6_Fabrica", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "_6_Fabrica", fetch = FetchType.EAGER)
     private List<Model> _5_EsFabricat = new ArrayList<>();
 
     public Marca() {
