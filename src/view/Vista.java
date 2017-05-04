@@ -609,6 +609,7 @@ public class Vista extends javax.swing.JFrame {
     private void jListConteModelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListConteModelMouseClicked
         jListConteModelClickedGet = getjListConteModel().getSelectedValuesList();
     }//GEN-LAST:event_jListConteModelMouseClicked
+
     //Getters i Setters
     public JButton getjButtonAcabatCotxeBorrar() {
         return jButtonAcabatCotxeBorrar;

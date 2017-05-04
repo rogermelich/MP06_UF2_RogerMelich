@@ -8,6 +8,7 @@ package entitats;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,19 +27,28 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "models")
 public class Model {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer _1_Id;
+    
     private Integer _2_Referencia;
     private String _3_Nom;
     private String _4_TipusCarrosseria;
-    
-    @ManyToMany(fetch = FetchType.EAGER)
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "model_acabatcotxe",
+            joinColumns = @JoinColumn(name = "_1_Id"),
+            inverseJoinColumns = @JoinColumn(name = "acabatcotxe_id")
+    )
     private List<AcabatCotxe> _5_Conte = new ArrayList<>();
-    
+
+    // @ManyToMany()
+    // private List<AcabatCotxe> _5_Conte = new ArrayList<>();
+
     @ManyToOne
-    @JoinColumn(name="model_id", nullable=true)
+    @JoinColumn(name = "model_id", nullable = true)
     private Marca _6_Fabrica;
 
     public Model() {
@@ -50,8 +60,9 @@ public class Model {
         this._4_TipusCarrosseria = _4_TipusCarrosseria;
         this._5_Conte = _5_Conte;
         this._6_Fabrica = _6_Fabrica;
-    }  
+    }
 
+    
     public Integer get1_Id() {
         return _1_Id;
     }

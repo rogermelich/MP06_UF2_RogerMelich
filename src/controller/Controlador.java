@@ -121,7 +121,11 @@ public class Controlador {
                     vista.getjTextFieldIdMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 0).toString());
                     vista.getjTextFieldNomMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 1).toString());
                     vista.getjTextFieldSeuCentralMarca().setText(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 2).toString());
-                    vista.getjComboBoxCompeteixMarca().setSelectedItem(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 3).toString());
+                    if (model.getValueAt(vista.getjTableMarca().getSelectedRow(), 3) == null) {
+                        // Si es null no fem res
+                    } else {
+                        vista.getjComboBoxCompeteixMarca().setSelectedItem(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 3).toString());
+                    }
                     vista.getjListEsFabricatMarca().setSelectedValue(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 4), true);
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula", "Error", JOptionPane.ERROR_MESSAGE);
@@ -143,7 +147,9 @@ public class Controlador {
         MouseAdapter clickTable = new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (vista.getjTableModel().getSelectedRow() != -1) {
+                int row = vista.getjTableModel().getSelectedRow();
+                if (row != -1) {
+                    System.out.println(row);
                     super.mouseClicked(e);
                     DefaultTableModel model = (DefaultTableModel) vista.getjTableModel().getModel();
                     vista.getjTextFieldIdModel().setText(model.getValueAt(vista.getjTableModel().getSelectedRow(), 0).toString());
@@ -151,7 +157,11 @@ public class Controlador {
                     vista.getjTextFieldNomModel().setText(model.getValueAt(vista.getjTableModel().getSelectedRow(), 2).toString());
                     vista.getjTextFieldTipusCarrosseriaModel().setText(model.getValueAt(vista.getjTableModel().getSelectedRow(), 3).toString());
                     vista.getjComboBoxFabricatModel().setSelectedItem(model.getValueAt(vista.getjTableModel().getSelectedRow(), 4).toString());
-                    vista.getjListConteModel().setSelectedValue(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 5), true);
+                    if (model.getValueAt(vista.getjTableModel().getSelectedRow(), 5) == null) {
+                        // Si es null no fem res
+                    } else {
+                        vista.getjListConteModel().setSelectedValue(model.getValueAt(vista.getjTableMarca().getSelectedRow(), 5), true);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "S'ha de seleccionar alguna línia de la taula", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -184,7 +194,7 @@ public class Controlador {
             }
 
         };
-        vista.getjTableModel().addMouseListener(clickTable);
+        vista.getjTableAcabatCotxe().addMouseListener(clickTable);
     }
 
     /**
@@ -290,8 +300,8 @@ public class Controlador {
                             modelModel.guarda(m);
                             CarregaTaulaModel = CarregaTaula.carregaTaula((ArrayList) modelModel.obtenLlista(), vista.getjTableModel(), Model.class);
                             CarregaTaulaMarca = CarregaTaula.carregaTaula((ArrayList) modelMarca.obtenLlista(), vista.getjTableMarca(), Marca.class);
-                            carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
                             carregaLlista(modelModel.obtenLlista(), vista.getjListEsFabricatMarca());
+                            carregaCombo((ArrayList) modelMarca.obtenLlista(), vista.getjComboBoxFabricatModel());
                         } else {
                             JOptionPane.showMessageDialog(null, "Introdueix tots els valors", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
@@ -345,6 +355,8 @@ public class Controlador {
                         modificarM.set2_Referencia(referencia);
                         modificarM.set3_Nom(vista.getjTextFieldNomModel().getText());
                         modificarM.set4_TipusCarrosseria(vista.getjTextFieldTipusCarrosseriaModel().getText());
+                        modificarM.set5_Conte(vista.jListConteModelClickedGet);
+                        modificarM.set6_Fabrica((Marca) vista.getjComboBoxCompeteixMarca().getSelectedItem());
 
                         vista.getjTableModel().removeColumn(CarregaTaulaModel);
                         modelModel.actualitza(modificarM);

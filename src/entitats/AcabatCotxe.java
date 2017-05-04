@@ -5,6 +5,7 @@
  */
 package entitats;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,9 @@ public class AcabatCotxe {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "acabatcotxe_id")
     private Integer _1_Id;
+    
     private String _2_Pack;
     private String _3_QualitatAcabament;
 
