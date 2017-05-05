@@ -22,7 +22,6 @@ public class AcabatCotxe {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "acabatcotxe_id")
     private Integer _1_Id;
     
     private String _2_Pack;

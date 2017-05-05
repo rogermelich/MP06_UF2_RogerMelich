@@ -21,8 +21,7 @@ import javax.swing.JTextField;
 public class Vista extends javax.swing.JFrame {
 
     public List<AcabatCotxe> jListConteModelClickedGet;
-    public List<Model> jListEsFabricatMarcaClickedGet;
-
+    
     /**
      * Creates new form JFramePrincipal
      */

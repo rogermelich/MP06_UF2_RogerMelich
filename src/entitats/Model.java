@@ -36,25 +36,20 @@ public class Model {
     private String _3_Nom;
     private String _4_TipusCarrosseria;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "model_acabatcotxe",
-            joinColumns = @JoinColumn(name = "_1_Id"),
-            inverseJoinColumns = @JoinColumn(name = "acabatcotxe_id")
-    )
-    private List<AcabatCotxe> _5_Conte = new ArrayList<>();
+    // @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private ArrayList<AcabatCotxe> _5_Conte = new ArrayList<>();
 
     // @ManyToMany()
     // private List<AcabatCotxe> _5_Conte = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "model_id", nullable = true)
+    @JoinColumn(name = "marca_id", nullable = true)
     private Marca _6_Fabrica;
 
     public Model() {
     }
 
-    public Model(Integer _2_Referencia, String _3_Nom, String _4_TipusCarrosseria, List<AcabatCotxe> _5_Conte, Marca _6_Fabrica) {
+    public Model(Integer _2_Referencia, String _3_Nom, String _4_TipusCarrosseria, ArrayList<AcabatCotxe> _5_Conte, Marca _6_Fabrica) {
         this._2_Referencia = _2_Referencia;
         this._3_Nom = _3_Nom;
         this._4_TipusCarrosseria = _4_TipusCarrosseria;
@@ -95,11 +90,11 @@ public class Model {
         this._4_TipusCarrosseria = _4_TipusCarrosseria;
     }
 
-    public List<AcabatCotxe> get5_Conte() {
+    public ArrayList<AcabatCotxe> get5_Conte() {
         return _5_Conte;
     }
 
-    public void set5_Conte(List<AcabatCotxe> _5_Conte) {
+    public void set5_Conte(ArrayList<AcabatCotxe> _5_Conte) {
         this._5_Conte = _5_Conte;
     }
 
