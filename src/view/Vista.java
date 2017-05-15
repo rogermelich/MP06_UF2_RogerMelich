@@ -19,8 +19,6 @@ import javax.swing.JTextField;
  * @author roger
  */
 public class Vista extends javax.swing.JFrame {
-
-    public List<AcabatCotxe> jListConteModelClickedGet;
     
     /**
      * Creates new form JFramePrincipal
@@ -59,6 +57,8 @@ public class Vista extends javax.swing.JFrame {
         jButtonNetejarCampsMarca = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListEsFabricatMarca = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButtonModelInsertar = new javax.swing.JButton();
         jButtonModelBorrar = new javax.swing.JButton();
@@ -80,6 +80,8 @@ public class Vista extends javax.swing.JFrame {
         jButtonNetejarCampsModel = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jListConteModel = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jButtonAcabatCotxeInsertar = new javax.swing.JButton();
         jButtonAcabatCotxeBorrar = new javax.swing.JButton();
@@ -170,6 +172,10 @@ public class Vista extends javax.swing.JFrame {
         jListEsFabricatMarca.setFocusable(false);
         jScrollPane1.setViewportView(jListEsFabricatMarca);
 
+        jLabel1.setText("(Model)");
+
+        jLabel2.setText("(Marca)");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -181,7 +187,7 @@ public class Vista extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +204,11 @@ public class Vista extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldSeuCentralMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel25)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jLabel2)))
                                 .addGap(16, 16, 16)
                                 .addComponent(jComboBoxCompeteixMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
@@ -213,8 +223,12 @@ public class Vista extends javax.swing.JFrame {
                         .addGap(75, 75, 75))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -237,15 +251,19 @@ public class Vista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(jComboBoxCompeteixMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel27)
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonNetejarCampsMarca)
                 .addGap(28, 28, 28)
                 .addComponent(jButtonMarcaInsertar)
@@ -326,12 +344,11 @@ public class Vista extends javax.swing.JFrame {
             }
         });
 
-        jListConteModel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jListConteModelMouseClicked(evt);
-            }
-        });
         jScrollPane4.setViewportView(jListConteModel);
+
+        jLabel3.setText("(Acabat Cotxe)");
+
+        jLabel4.setText("   (Marca)");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -355,11 +372,13 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jTextFieldIdModel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldReferenciaModel, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel9)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel13))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextFieldTipusCarrosseriaModel, javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,18 +417,23 @@ public class Vista extends javax.swing.JFrame {
                             .addComponent(jTextFieldTipusCarrosseriaModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabel12)
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxFabricatModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(32, 32, 32)
-                        .addComponent(jButtonNetejarCampsModel))
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jComboBoxFabricatModel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButtonNetejarCampsModel))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -587,243 +611,147 @@ public class Vista extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowLostFocus
 
     private void jButtonNetejarCampsMarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNetejarCampsMarcaMouseClicked
-        jTextFieldIdMarca.setText("");
-        jTextFieldNomMarca.setText("");
-        jTextFieldSeuCentralMarca.setText("");
+        NetejarCampsMarca("");
     }//GEN-LAST:event_jButtonNetejarCampsMarcaMouseClicked
 
     private void jButtonNetejarCampsModelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNetejarCampsModelMouseClicked
-        jTextFieldIdModel.setText("");
-        jTextFieldReferenciaModel.setText("");
-        jTextFieldNomModel.setText("");
-        jTextFieldTipusCarrosseriaModel.setText("");
+        NetejarCampsModel("");
     }//GEN-LAST:event_jButtonNetejarCampsModelMouseClicked
 
     private void jButtonNetejarCampsAcabatCotxeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNetejarCampsAcabatCotxeMouseClicked
-        jTextFieldIdAcabatCotxe.setText("");
-        jTextFieldPackAcabatCotxe.setText("");
-        jTextFieldQualitatAcabatCotxe.setText("");
+        NetejarCampsAcabatCotxe("");
     }//GEN-LAST:event_jButtonNetejarCampsAcabatCotxeMouseClicked
 
-    private void jListConteModelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListConteModelMouseClicked
-        jListConteModelClickedGet = getjListConteModel().getSelectedValuesList();
-    }//GEN-LAST:event_jListConteModelMouseClicked
-
-    //Getters i Setters
+    public void NetejarCampsMarca(String string){
+        jTextFieldIdMarca.setText(string);
+        jTextFieldNomMarca.setText(string);
+        jTextFieldSeuCentralMarca.setText(string);
+    }
+    
+    public void NetejarCampsModel(String string){
+        jTextFieldIdModel.setText(string);
+        jTextFieldReferenciaModel.setText(string);
+        jTextFieldNomModel.setText(string);
+        jTextFieldTipusCarrosseriaModel.setText(string);
+    }
+    
+    public void NetejarCampsAcabatCotxe(String string){
+        jTextFieldIdAcabatCotxe.setText(string);
+        jTextFieldPackAcabatCotxe.setText(string);
+        jTextFieldQualitatAcabatCotxe.setText(string);
+    }
+    
+    //Getters
     public JButton getjButtonAcabatCotxeBorrar() {
         return jButtonAcabatCotxeBorrar;
-    }   
-
-    public void setjButtonAcabatCotxeBorrar(JButton jButtonAcabatCotxeBorrar) {
-        this.jButtonAcabatCotxeBorrar = jButtonAcabatCotxeBorrar;
     }
 
     public JButton getjButtonAcabatCotxeInsertar() {
         return jButtonAcabatCotxeInsertar;
     }
 
-    public void setjButtonAcabatCotxeInsertar(JButton jButtonAcabatCotxeInsertar) {
-        this.jButtonAcabatCotxeInsertar = jButtonAcabatCotxeInsertar;
-    }
-
     public JButton getjButtonAcabatCotxeModificar() {
         return jButtonAcabatCotxeModificar;
-    }
-
-    public void setjButtonAcabatCotxeModificar(JButton jButtonAcabatCotxeModificar) {
-        this.jButtonAcabatCotxeModificar = jButtonAcabatCotxeModificar;
     }
 
     public JButton getjButtonMarcaBorrar() {
         return jButtonMarcaBorrar;
     }
 
-    public void setjButtonMarcaBorrar(JButton jButtonMarcaBorrar) {
-        this.jButtonMarcaBorrar = jButtonMarcaBorrar;
-    }
-
     public JButton getjButtonMarcaInsertar() {
         return jButtonMarcaInsertar;
-    }
-
-    public void setjButtonMarcaInsertar(JButton jButtonMarcaInsertar) {
-        this.jButtonMarcaInsertar = jButtonMarcaInsertar;
     }
 
     public JButton getjButtonMarcaModificar() {
         return jButtonMarcaModificar;
     }
 
-    public void setjButtonMarcaModificar(JButton jButtonMarcaModificar) {
-        this.jButtonMarcaModificar = jButtonMarcaModificar;
-    }
-
     public JButton getjButtonModelBorrar() {
         return jButtonModelBorrar;
-    }
-
-    public void setjButtonModelBorrar(JButton jButtonModelBorrar) {
-        this.jButtonModelBorrar = jButtonModelBorrar;
     }
 
     public JButton getjButtonModelInsertar() {
         return jButtonModelInsertar;
     }
 
-    public void setjButtonModelInsertar(JButton jButtonModelInsertar) {
-        this.jButtonModelInsertar = jButtonModelInsertar;
-    }
-
     public JButton getjButtonModelModificar() {
         return jButtonModelModificar;
     }
 
-    public void setjButtonModelModificar(JButton jButtonModelModificar) {
-        this.jButtonModelModificar = jButtonModelModificar;
+    public JButton getjButtonNetejarCampsAcabatCotxe() {
+        return jButtonNetejarCampsAcabatCotxe;
     }
 
     public JButton getjButtonSortir() {
         return jButtonSortir;
     }
 
-    public void setjButtonSortir(JButton jButtonSortir) {
-        this.jButtonSortir = jButtonSortir;
-    }
-
-    public JTable getjTableAcabatCotxe() {
-        return jTableAcabatCotxe;
-    }
-
-    public void setjTableAcabatCotxe(JTable jTableAcabatCotxe) {
-        this.jTableAcabatCotxe = jTableAcabatCotxe;
-    }
-
-    public JTable getjTableMarca() {
-        return jTableMarca;
-    }
-
-    public void setjTableMarca(JTable jTableMarca) {
-        this.jTableMarca = jTableMarca;
-    }
-
-    public JTable getjTableModel() {
-        return jTableModel;
-    }
-
-    public void setjTableModel(JTable jTableModel) {
-        this.jTableModel = jTableModel;
-    }
-
-    public JList<AcabatCotxe> getjListConteModel() {
-        return jListConteModel;
-    }
-
-    public void setjListConteModel(JList<AcabatCotxe> jListConteModel) {
-        this.jListConteModel = jListConteModel;
-    }
-
-    public JTextField getjTextFieldIdMarca() {
-        return jTextFieldIdMarca;
-    }
-
-    public void setjTextFieldIdMarca(JTextField jTextFieldIdMarca) {
-        this.jTextFieldIdMarca = jTextFieldIdMarca;
-    }
-
-    public JTextField getjTextFieldIdModel() {
-        return jTextFieldIdModel;
-    }
-
-    public void setjTextFieldIdModel(JTextField jTextFieldIdModel) {
-        this.jTextFieldIdModel = jTextFieldIdModel;
-    }
-
-    public JTextField getjTextFieldNomMarca() {
-        return jTextFieldNomMarca;
-    }
-
-    public void setjTextFieldNomMarca(JTextField jTextFieldNomMarca) {
-        this.jTextFieldNomMarca = jTextFieldNomMarca;
-    }
-
-    public JTextField getjTextFieldNomModel() {
-        return jTextFieldNomModel;
-    }
-
-    public void setjTextFieldNomModel(JTextField jTextFieldNomModel) {
-        this.jTextFieldNomModel = jTextFieldNomModel;
-    }
-
-    public JTextField getjTextFieldReferenciaModel() {
-        return jTextFieldReferenciaModel;
-    }
-
-    public void setjTextFieldReferenciaModel(JTextField jTextFieldReferenciaModel) {
-        this.jTextFieldReferenciaModel = jTextFieldReferenciaModel;
-    }
-
-    public JTextField getjTextFieldSeuCentralMarca() {
-        return jTextFieldSeuCentralMarca;
-    }
-
-    public void setjTextFieldSeuCentralMarca(JTextField jTextFieldSeuCentralMarca) {
-        this.jTextFieldSeuCentralMarca = jTextFieldSeuCentralMarca;
-    }
-
-    public JTextField getjTextFieldTipusCarrosseriaModel() {
-        return jTextFieldTipusCarrosseriaModel;
-    }
-
-    public void setjTextFieldTipusCarrosseriaModel(JTextField jTextFieldTipusCarrosseriaModel) {
-        this.jTextFieldTipusCarrosseriaModel = jTextFieldTipusCarrosseriaModel;
-    }
-
     public JComboBox<String> getjComboBoxCompeteixMarca() {
         return jComboBoxCompeteixMarca;
-    }
-
-    public void setjComboBoxCompeteixMarca(JComboBox<String> jComboBoxCompeteixMarca) {
-        this.jComboBoxCompeteixMarca = jComboBoxCompeteixMarca;
     }
 
     public JComboBox<String> getjComboBoxFabricatModel() {
         return jComboBoxFabricatModel;
     }
 
-    public void setjComboBoxFabricatModel(JComboBox<String> jComboBoxFabricatModel) {
-        this.jComboBoxFabricatModel = jComboBoxFabricatModel;
+    public JList<AcabatCotxe> getjListConteModel() {
+        return jListConteModel;
     }
 
     public JList<Model> getjListEsFabricatMarca() {
-        return (JList<Model>) jListEsFabricatMarca;
+        return jListEsFabricatMarca;
     }
 
-    public void setjListEsFabricatMarca(JList<Model> jListEsFabricatMarca) {
-        this.jListEsFabricatMarca = jListEsFabricatMarca;
+    public JTable getjTableAcabatCotxe() {
+        return jTableAcabatCotxe;
+    }
+
+    public JTable getjTableMarca() {
+        return jTableMarca;
+    }
+
+    public JTable getjTableModel() {
+        return jTableModel;
     }
 
     public JTextField getjTextFieldIdAcabatCotxe() {
         return jTextFieldIdAcabatCotxe;
     }
 
-    public void setjTextFieldIdAcabatCotxe(JTextField jTextFieldIdAcabatCotxe) {
-        this.jTextFieldIdAcabatCotxe = jTextFieldIdAcabatCotxe;
+    public JTextField getjTextFieldIdMarca() {
+        return jTextFieldIdMarca;
+    }
+
+    public JTextField getjTextFieldIdModel() {
+        return jTextFieldIdModel;
+    }
+
+    public JTextField getjTextFieldNomMarca() {
+        return jTextFieldNomMarca;
+    }
+
+    public JTextField getjTextFieldNomModel() {
+        return jTextFieldNomModel;
     }
 
     public JTextField getjTextFieldPackAcabatCotxe() {
         return jTextFieldPackAcabatCotxe;
     }
 
-    public void setjTextFieldPackAcabatCotxe(JTextField jTextFieldPackAcabatCotxe) {
-        this.jTextFieldPackAcabatCotxe = jTextFieldPackAcabatCotxe;
-    }
-
     public JTextField getjTextFieldQualitatAcabatCotxe() {
         return jTextFieldQualitatAcabatCotxe;
     }
 
-    public void setjTextFieldQualitatAcabatCotxe(JTextField jTextFieldQualitatAcabatCotxe) {
-        this.jTextFieldQualitatAcabatCotxe = jTextFieldQualitatAcabatCotxe;
+    public JTextField getjTextFieldReferenciaModel() {
+        return jTextFieldReferenciaModel;
+    }
+
+    public JTextField getjTextFieldSeuCentralMarca() {
+        return jTextFieldSeuCentralMarca;
+    }
+
+    public JTextField getjTextFieldTipusCarrosseriaModel() {
+        return jTextFieldTipusCarrosseriaModel;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -842,6 +770,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSortir;
     private javax.swing.JComboBox<String> jComboBoxCompeteixMarca;
     private javax.swing.JComboBox<String> jComboBoxFabricatModel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -849,6 +778,7 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -856,6 +786,8 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

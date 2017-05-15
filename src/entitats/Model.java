@@ -37,10 +37,8 @@ public class Model {
     private String _4_TipusCarrosseria;
 
     // @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<AcabatCotxe> _5_Conte = new ArrayList<>();
-
-    // @ManyToMany()
-    // private List<AcabatCotxe> _5_Conte = new ArrayList<>();
+    // Ja es guarda Correctament a la Base de Dades
+    private ArrayList<AcabatCotxe> _5_Conte;
 
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = true)
@@ -57,7 +55,7 @@ public class Model {
         this._6_Fabrica = _6_Fabrica;
     }
 
-    
+
     public Integer get1_Id() {
         return _1_Id;
     }
