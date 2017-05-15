@@ -7,7 +7,6 @@ package view;
 
 import entitats.AcabatCotxe;
 import entitats.Model;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
